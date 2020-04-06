@@ -1,0 +1,11 @@
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=WP_PSW
+resources:
+- nginx-deploy.yaml
+- ingress.yaml
+- mysql-deploy.yaml
+- wordpress-deploy.yaml
+- phpmyadmin-deploy.yaml
+# - ftps/ftps-deploy.yaml
