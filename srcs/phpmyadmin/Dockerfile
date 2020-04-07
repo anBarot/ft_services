@@ -16,8 +16,6 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/ce
 -subj "/C=FR/ST=Paris/L=Paris/O=NA/OU=abarot/CN=mysite.com"
 
 RUN mkdir /var/www/my_site.com
-RUN chown -R nginx /var/www/my_site.com
-RUN chmod 755 -R /var/www/my_site.com
 
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.4/phpMyAdmin-4.9.4-all-languages.tar.gz
 RUN tar xf phpMyAdmin-4.9.4-all-languages.tar.gz
@@ -27,4 +25,4 @@ RUN chown -R nginx phpmyadmin
 RUN chmod 755 -R phpmyadmin
 RUN mv phpmyadmin /var/www/my_site.com/.
 
-ENTRYPOINT ["/bin/sh", "-c", "while true; do sleep 1; done"]
+ECMD ["nginx", "-g", "daemon off;"]
