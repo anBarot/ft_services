@@ -3,6 +3,6 @@ kind: Ingress
 metadata:
   name: nginx-ingress
 spec:
-    backend:
-        serviceName: nginx-svc
-        servicePort: 80
+  backend:
+    serviceName: nginx
+    servicePort: 80

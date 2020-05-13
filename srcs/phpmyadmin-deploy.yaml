@@ -32,7 +32,7 @@ spec:
           image: phpmyadmin-img
           imagePullPolicy: Never
           ports:
-            - containerPort: 80
+            - containerPort: 5000
           env:
             - name: PMA_HOST
               value: mysql-service
