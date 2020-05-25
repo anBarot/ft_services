@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wp-mysql
+  name: mysql-svc
   labels:
     app: wordpress
 spec:
@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pvc
+  name: mysql-pv-claim
   labels:
     app: wordpress
 spec:
@@ -28,7 +28,7 @@ spec:
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: wp-mysql
+  name: mysql
   labels:
     app: wordpress
 spec:
@@ -48,6 +48,8 @@ spec:
       - image: mysql-img
         name: mysql
         imagePullPolicy: Never
+        securityContext:
+          privileged: true
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
@@ -63,4 +65,4 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-pvc
+          claimName: mysql-pv-claim

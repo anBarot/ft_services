@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wp-pvc
+  name: wp-pv-claim
   labels:
     app: wordpress
 spec:
@@ -25,7 +25,7 @@ spec:
     requests:
       storage: 20Gi
 ---
-apiVersion: apps/v1 
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: wordpress
@@ -45,9 +45,11 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress-img
-        name: wordpress
+      - name: wordpress
+        image: wordpress-img
         imagePullPolicy: Never
+        securityContext:
+          privileged: true
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
@@ -57,7 +59,7 @@ spec:
               name: mysql-pass
               key: password
         ports:
-        - containerPort: 5050
+        - containerPort: 80
           name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
@@ -65,4 +67,4 @@ spec:
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: wp-pvc
+          claimName: wp-pv-claim
