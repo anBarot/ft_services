@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:latest
 LABEL maintainer="abarot@42.student.fr"
 
 RUN apk add vsftpd

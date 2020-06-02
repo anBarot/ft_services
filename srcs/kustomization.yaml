@@ -1,7 +1,7 @@
 secretGenerator:
 - name: mysql-pass
   literals:
-  - password="PSW"
+  - password='psw'
 resources:
 # ingress controller and ingress
 - kubernetes-ingress/ns-and-sa.yaml
@@ -21,5 +21,5 @@ resources:
 - nginx-deploy.yaml
 - mysql-deploy.yaml
 - wordpress-deploy.yaml
-# - phpmyadmin-deploy.yaml
+- phpmyadmin-deploy.yaml
 # - ftps/ftps-deploy.yaml

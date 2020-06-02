@@ -1,7 +1,8 @@
-FROM alpine:3.9
+FROM alpine:latest
 LABEL maintainer="abarot@42.student.fr"
 
-EXPOSE 80 443
+EXPOSE 5050
+VOLUME /var/www/html
 
 ENV PHP_FPM_USER="nginx"
 ENV PHP_FPM_GROUP="nginx"
@@ -16,13 +17,14 @@ ENV PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_E
 ENV PHP_CGI_FIX_PATHINFO=0
 
 RUN apk update
-RUN apk add nginx openssl supervisor
+RUN apk add nginx openssl mysql-client supervisor
 RUN apk add php7-fpm php7-openssl php7-json php7-dom php7-zip php7-mysqli \
 			php7-curl
 
 ADD supervisor.conf /etc/supervisor.conf
 COPY ./nginx.conf /etc/nginx/.
 COPY ./latest.tar.gz ./
+COPY ./wp-config.php ./
 COPY ./wp_init.sh ./
 
 RUN ./wp_init.sh

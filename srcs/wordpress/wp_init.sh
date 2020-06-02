@@ -1,11 +1,9 @@
-openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/mysite.pem -keyout /etc/ssl/private/mysite.key \
--subj "/C=FR/ST=Paris/L=Paris/O=NA/OU=abarot/CN=mysite.com"
-
 tar xf latest.tar.gz
 rm latest.tar.gz
 chown -R nginx wordpress
 chmod 755 -R wordpress
 mv wordpress /var/www/.
+mv wp-config.php /var/www/wordpress/.
 
 sed -i "s|;listen.owner\s*=\s*nobody|listen.owner = ${PHP_FPM_USER}|g" /etc/php7/php-fpm.d/www.conf
 sed -i "s|;listen.group\s*=\s*nobody|listen.group = ${PHP_FPM_GROUP}|g" /etc/php7/php-fpm.d/www.conf

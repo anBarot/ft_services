@@ -3,45 +3,45 @@ kind: Service
 metadata:
   name: mysql-svc
   labels:
-    app: wordpress
+    app: mysql
 spec:
+  type: NodePort
   ports:
-    - port: 3306
+    - name: mysql-svc
+      port: 3306
   selector:
-    app: wordpress
-    tier: mysql
-  clusterIP: None
+    app: mysql
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
   labels:
-    app: wordpress
+    app: mysql
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 5Gi
 ---
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
   name: mysql
   labels:
-    app: wordpress
+    app: mysql
 spec:
   selector:
     matchLabels:
-      app: wordpress
+      app: mysql
       tier: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: wordpress
+        app: mysql
         tier: mysql
     spec:
       containers:
