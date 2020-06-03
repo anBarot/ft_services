@@ -14,5 +14,6 @@ minikube addons enable ingress
 
 kubectl apply -k srcs/.
 
+minikube dashboard &
 # ssh (user-id)@(minikube_ip) -p (port-numer)
 # mysql -u wp_user -p -h mysql-svc
