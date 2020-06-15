@@ -11,5 +11,11 @@ COPY ./init_mysql.sh .
 COPY ./create_db.sh .
 COPY ./wrapper.sh .
 
+RUN mkdir -m 755 /etc/telegraf
+COPY ./telegraf.conf /etc/telegraf/.
+COPY ./telegraf-1.6.3-static_linux_amd64.tar.gz .
+RUN tar xf telegraf-1.6.3-static_linux_amd64.tar.gz && \
+	rm telegraf-1.6.3-static_linux_amd64.tar.gz
+
 ENTRYPOINT [ "./wrapper.sh"]
 EXPOSE 3306

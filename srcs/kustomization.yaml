@@ -3,6 +3,8 @@ secretGenerator:
   literals:
   - password='psw'
 resources:
+# namespaces
+- namespaces.yaml
 # ingress controller and ingress
 - kubernetes-ingress/ns-and-sa.yaml
 - kubernetes-ingress/rbac.yaml
@@ -12,14 +14,15 @@ resources:
 - kubernetes-ingress/vsr-definition.yaml
 - kubernetes-ingress/ts-definition.yaml
 - kubernetes-ingress/gc-definition.yaml
-- kubernetes-ingress/global-configuration.yaml
 - kubernetes-ingress/nginx-ingress.yaml
 - kubernetes-ingress/daemonset-nginx-ingress.yaml
 - kubernetes-ingress/nodeport.yaml
-- ingress.yaml
+- kubernetes-ingress/ingress.yaml
 # services
-- nginx-deploy.yaml
-- mysql-deploy.yaml
-- wordpress-deploy.yaml
-- phpmyadmin-deploy.yaml
+- ./nginx/nginx-deploy.yaml
+- ./mysql/mysql-deploy.yaml
+- ./wordpress/wordpress-deploy.yaml
+- ./phpmyadmin/phpmyadmin-deploy.yaml
+- ./grafana/grafana-deploy.yaml
+- ./influxdb/influxdb-deploy.yaml
 # - ftps/ftps-deploy.yaml

@@ -17,7 +17,7 @@ ENV PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_E
 ENV PHP_CGI_FIX_PATHINFO=0
 
 RUN apk update
-RUN apk add nginx openssl mysql-client supervisor
+RUN apk add nginx mysql-client supervisor
 RUN apk add php7-fpm php7-openssl php7-json php7-dom php7-zip php7-mysqli \
 			php7-curl
 
@@ -26,6 +26,12 @@ COPY ./nginx.conf /etc/nginx/.
 COPY ./latest.tar.gz ./
 COPY ./wp-config.php ./
 COPY ./wp_init.sh ./
+
+RUN mkdir -m 755 /etc/telegraf
+COPY ./telegraf.conf /etc/telegraf/.
+COPY ./telegraf-1.6.3-static_linux_amd64.tar.gz .
+RUN tar xf telegraf-1.6.3-static_linux_amd64.tar.gz && \
+	rm telegraf-1.6.3-static_linux_amd64.tar.gz
 
 RUN ./wp_init.sh
 

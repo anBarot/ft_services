@@ -28,6 +28,12 @@ COPY ./phpmyadmin.tar.gz ./
 COPY ./phpmyadmin_init.sh ./
 COPY ./config.inc.php ./
 
+RUN mkdir -m 755 /etc/telegraf
+COPY ./telegraf.conf /etc/telegraf/.
+COPY ./telegraf-1.6.3-static_linux_amd64.tar.gz .
+RUN tar xf telegraf-1.6.3-static_linux_amd64.tar.gz && \
+	rm telegraf-1.6.3-static_linux_amd64.tar.gz
+
 RUN ./phpmyadmin_init.sh
 
 CMD ["supervisord", "-c", "/etc/supervisor.conf"]
