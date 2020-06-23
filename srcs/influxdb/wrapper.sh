@@ -4,6 +4,9 @@
 ./influxd_start.sh
 
 # # # Start the second process
+
+./create_db.sh
+
 ./telegraf/telegraf
 
 # Naive check runs checks once a minute to see if either of the processes exited.

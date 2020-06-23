@@ -15,8 +15,7 @@ ENV PHP_DISPLAY_STARTUP_ERRORS="On"
 ENV PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR"
 ENV PHP_CGI_FIX_PATHINFO=0
 
-RUN apk update
-RUN apk add nginx mysql-client lighttpd supervisor
+RUN apk add --update nginx mysql-client lighttpd supervisor
 RUN apk add php7-fpm php-mbstring php7-openssl php7-json php7-dom php7-zip php7-mysqli \
 			php7-curl php7-session php7-opcache php7-gd php7-zlib  php7-common \
 			php7-iconv php7-xml php7-imap php7-cgi fcgi \
