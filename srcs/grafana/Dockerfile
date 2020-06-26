@@ -9,6 +9,7 @@ RUN tar xf grafana-7.0.3.linux-amd64.tar.gz && rm grafana-7.0.3.linux-amd64.tar.
 COPY ./grafana.db ./grafana-7.0.3/data/
 COPY ./wrapper.sh .
 COPY ./grafana_init.sh .
+COPY ./liveness.sh .
 
 RUN mkdir -m 755 /etc/telegraf
 COPY ./telegraf.conf /etc/telegraf/.

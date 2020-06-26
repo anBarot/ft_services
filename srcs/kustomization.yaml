@@ -4,18 +4,8 @@ secretGenerator:
   - password='psw'
 resources:
 # ingress controller and ingress
-- kubernetes-ingress/ns-and-sa.yaml
-- kubernetes-ingress/rbac.yaml
-- kubernetes-ingress/default-server-secret.yaml
-- kubernetes-ingress/nginx-config.yaml
-- kubernetes-ingress/vs-definition.yaml
-- kubernetes-ingress/vsr-definition.yaml
-- kubernetes-ingress/ts-definition.yaml
-- kubernetes-ingress/gc-definition.yaml
-- kubernetes-ingress/nginx-ingress.yaml
-- kubernetes-ingress/daemonset-nginx-ingress.yaml
-- kubernetes-ingress/nodeport.yaml
-- kubernetes-ingress/ingress.yaml
+- ingress/metallb.yaml
+- ingress/ingress.yaml
 # services
 - ./nginx/nginx-deploy.yaml
 - ./mysql/mysql-deploy.yaml

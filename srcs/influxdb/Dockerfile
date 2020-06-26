@@ -7,6 +7,7 @@ RUN apk add influxdb
 COPY ./influxd_start.sh .
 COPY ./wrapper.sh .
 COPY ./create_db.sh .
+COPY ./liveness.sh .
 
 RUN mkdir -m 755 /etc/telegraf
 COPY ./telegraf.conf /etc/telegraf/.

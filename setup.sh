@@ -1,4 +1,4 @@
-minikube start
+minikube start --extra-config=apiserver.service-node-port-range=20-40000
 
 ## Building containers
 eval $(minikube docker-env)
@@ -14,6 +14,7 @@ docker build -t ftps-img srcs/ftps/.
 ## Creating deployments and services
 minikube addons enable ingress
 
+kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.7.3/manifests/metallb.yaml
 kubectl apply -k srcs/.
 
 ## Monitoring services

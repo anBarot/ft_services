@@ -10,6 +10,7 @@ COPY ./my.cnf /etc/.
 COPY ./init_mysql.sh .
 COPY ./create_db.sh .
 COPY ./wrapper.sh .
+COPY ./liveness.sh .
 
 RUN mkdir -m 755 /etc/telegraf
 COPY ./telegraf.conf /etc/telegraf/.

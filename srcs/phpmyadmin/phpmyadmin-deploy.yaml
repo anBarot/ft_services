@@ -5,14 +5,16 @@ metadata:
   labels:
     app: phpmyadmin
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: phpmyadmin
     tier: frontend
   ports:
-  - name: http
+  - name: phpmyadmin
     protocol: TCP
     port: 5000
+    targetPort: 5000
+    nodePort: 5000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,6 +41,14 @@ spec:
         imagePullPolicy: Never
         securityContext:
           privileged: true
+        livenessProbe:
+          exec:
+            command:
+              - bin/sh
+              - -c
+              - ./liveness.sh
+          initialDelaySeconds: 15
+          periodSeconds: 10
         ports:
         - containerPort: 5000
           name: phpmyadmin

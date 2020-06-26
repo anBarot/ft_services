@@ -5,12 +5,14 @@ metadata:
   labels:
     app: influxdb
 spec:
-  type: NodePort
-  ports:
-    - name: influxdb
-      port: 8086
   selector:
     app: influxdb
+  type: ClusterIP
+  ports:  
+  - name: influxdb
+    port: 8086
+    targetPort: 8086
+    protocol: TCP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -50,6 +52,14 @@ spec:
         imagePullPolicy: Never
         securityContext:
           privileged: true
+        livenessProbe:
+          exec:
+            command:
+              - bin/sh
+              - -c
+              - ./liveness.sh
+          initialDelaySeconds: 15
+          periodSeconds: 10
         ports:
         - containerPort: 8086
           name: influxdb

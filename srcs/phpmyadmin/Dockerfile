@@ -26,6 +26,7 @@ COPY ./nginx.conf /etc/nginx/.
 COPY ./phpmyadmin.tar.gz ./
 COPY ./phpmyadmin_init.sh ./
 COPY ./config.inc.php ./
+COPY ./liveness.sh .
 
 RUN mkdir -m 755 /etc/telegraf
 COPY ./telegraf.conf /etc/telegraf/.

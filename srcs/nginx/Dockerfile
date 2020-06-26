@@ -8,6 +8,7 @@ RUN apk add --update nginx openssl supervisor openssh --no-cache
 COPY ./nginx.conf /etc/nginx/.
 COPY ./sshd_config /etc/ssh/.
 COPY ./init_ssh.sh .
+COPY ./liveness.sh .
 ADD supervisor.conf /etc/supervisor.conf
 
 RUN ./init_ssh.sh

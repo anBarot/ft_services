@@ -26,6 +26,7 @@ COPY ./nginx.conf /etc/nginx/.
 COPY ./latest.tar.gz ./
 COPY ./wp-config.php ./
 COPY ./wp_init.sh ./
+COPY ./liveness.sh .
 
 RUN mkdir -m 755 /etc/telegraf
 COPY ./telegraf.conf /etc/telegraf/.

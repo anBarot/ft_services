@@ -5,6 +5,7 @@ RUN apk update && apk add --no-cache vsftpd supervisor openssl
 
 COPY ./vsftpd.conf /etc/vsftpd.conf
 COPY ./init_ftps.sh .
+COPY ./liveness.sh .
 ADD ./supervisor.conf /etc/supervisor.conf
 
 RUN ./init_ftps.sh

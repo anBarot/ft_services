@@ -5,12 +5,14 @@ metadata:
   labels:
     app: mysql
 spec:
-  type: NodePort
-  ports:
-    - name: mysql
-      port: 3306
   selector:
     app: mysql
+  type: ClusterIP
+  ports:  
+  - name: mysql
+    port: 3306
+    targetPort: 3306
+    protocol: TCP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -50,6 +52,14 @@ spec:
         imagePullPolicy: Never
         securityContext:
           privileged: true
+        livenessProbe:
+          exec:
+            command:
+              - bin/sh
+              - -c
+              - ./liveness.sh
+          initialDelaySeconds: 15
+          periodSeconds: 10
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
