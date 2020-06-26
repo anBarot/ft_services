@@ -3,9 +3,8 @@ secretGenerator:
   literals:
   - password='psw'
 resources:
-# ingress controller and ingress
-- ingress/metallb.yaml
-- ingress/ingress.yaml
+# loadbalancer
+- ./loadbalancer/metallb.yaml
 # services
 - ./nginx/nginx-deploy.yaml
 - ./mysql/mysql-deploy.yaml

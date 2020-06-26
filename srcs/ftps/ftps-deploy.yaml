@@ -10,12 +10,10 @@ spec:
   - name: ftp-server
     protocol: TCP
     port: 21
-    targetPort: 21
     nodePort: 21
   - name: ftp-data
     protocol: TCP
     port: 20
-    targetPort: 20
     nodePort: 20
   - name: ftp-pass1
     protocol: TCP

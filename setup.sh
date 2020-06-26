@@ -14,17 +14,17 @@ docker build -t ftps-img srcs/ftps/.
 ## Creating deployments and services
 minikube addons enable ingress
 
-kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.7.3/manifests/metallb.yaml
 kubectl apply -k srcs/.
 
 ## Monitoring services
 minikube dashboard &
 
 #connection ssh :
-# ssh ssh_user@172.17.0.2 -p (portnumber)
+# ssh ssh_user@172.17.0.2 -p 2222
 # password : psw
 
 #connection ftp :
-# ftp 172.17.0.2 portnumber
+# ftp 172.17.0.2 21
 # id : ftp_user 
 # password : psw
+# passive mode : pass

@@ -5,4 +5,3 @@ addgroup ftpgroup
 adduser ftp_user -G ftpgroup -h /home/ftp_user -D
 echo -e "psw\npsw" | passwd ftp_user
 chown -R ftp_user /home/ftp_user
-touch /home/ftp_user/header.txt

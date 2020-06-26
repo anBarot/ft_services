@@ -8,17 +8,14 @@ spec:
   type:  LoadBalancer
   ports:
   - port: 80
-    targetPort: 80
     nodePort: 80
     protocol: TCP
     name: http
   - port: 443
-    targetPort: 443
     nodePort: 443
     protocol: TCP
     name: https
   - port: 2222
-    targetPort: 2222
     nodePort: 2222
     protocol: TCP
     name: sshd
