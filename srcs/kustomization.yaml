@@ -1,7 +1,3 @@
-secretGenerator:
-- name: mysql-pass
-  literals:
-  - password='psw'
 resources:
 # loadbalancer
 - ./loadbalancer/metallb.yaml

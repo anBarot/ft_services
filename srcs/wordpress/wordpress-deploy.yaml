@@ -60,13 +60,7 @@ spec:
               - -c
               - ./liveness.sh
           initialDelaySeconds: 15
-          periodSeconds: 10
-        env:
-        - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass
-              key: password
+          periodSeconds: 20
         ports:
         - containerPort: 5050
           name: wordpress

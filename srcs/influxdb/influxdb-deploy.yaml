@@ -58,7 +58,7 @@ spec:
               - -c
               - ./liveness.sh
           initialDelaySeconds: 15
-          periodSeconds: 10
+          periodSeconds: 20
         ports:
         - containerPort: 8086
           name: influxdb

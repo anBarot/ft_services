@@ -58,13 +58,7 @@ spec:
               - -c
               - ./liveness.sh
           initialDelaySeconds: 15
-          periodSeconds: 10
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass
-              key: password
+          periodSeconds: 20
         ports:
         - containerPort: 3306
           name: mysql

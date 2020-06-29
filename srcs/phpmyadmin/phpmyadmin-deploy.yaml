@@ -47,7 +47,7 @@ spec:
               - -c
               - ./liveness.sh
           initialDelaySeconds: 15
-          periodSeconds: 10
+          periodSeconds: 20
         ports:
         - containerPort: 5000
           name: phpmyadmin
@@ -56,8 +56,3 @@ spec:
             value: mysql
           - name: PMA_PORT
             value: "3306"
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-pass
-                key: password

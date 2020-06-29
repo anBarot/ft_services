@@ -47,7 +47,7 @@ spec:
               - -c
               - ./liveness.sh
           initialDelaySeconds: 15
-          periodSeconds: 10
+          periodSeconds: 20
         ports:
         - containerPort: 3000
           name: grafana
